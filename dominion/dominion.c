@@ -840,11 +840,11 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case village:
-      // Added new bug where player draws +2 cards instead of +1 cards
+      //+1 Card
       drawCard(currentPlayer, state);
 			
-      //+2 Actions
-      state->numActions = state->numActions + 2;
+      // Added new bug where the player can get +3 action instead of +2
+      state->numActions = state->numActions + 3;
 			
       //discard played card from hand
       discardCard(handPos, currentPlayer, state, 0);
