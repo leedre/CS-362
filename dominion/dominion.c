@@ -667,7 +667,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   switch( card ) 
     {
     case adventurer:
-      while(drawntreasure<2){
+      while(drawntreasure<3){ // new bug where you show the card from your deck until you show 3 instead of 2 treasure cards
 	if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
 	  shuffle(currentPlayer, state);
 	}
@@ -733,7 +733,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 	  }
 	}
 	else if (state->coins < getCost(choice1)){
-	  printf("That card is too expensive!\n");
+	  printf("That card is too cheap!\n"); // added bug where expensive was replaced with cheap
 
 	  if (DEBUG){
 	    printf("Coins: %d < %d\n", state->coins, getCost(choice1));
@@ -829,8 +829,8 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case smithy:
-      //+3 Cards
-      for (i = 0; i < 3; i++)
+      // Added new bug where the value changed from +3 to +5
+      for (i = 0; i < 5; i++)
 	{
 	  drawCard(currentPlayer, state);
 	}
@@ -840,7 +840,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case village:
-      //+1 Card
+      // Added new bug where player draws +2 cards instead of +1 cards
       drawCard(currentPlayer, state);
 			
       //+2 Actions
